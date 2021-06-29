@@ -1,0 +1,29 @@
+/* NAV-IMG */
+.nav-img img {
+    width: 100%;
+}
+.slider-imgs .current{
+    border:3px solid blue;
+}
+
+
+/* SLIDER */
+.slider img {
+    width: 100%;
+}
+.arrow{
+    font-size: 50px;
+    position: relative;
+}
+.arrow .left{
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translate(0%,-50%);
+}
+.arrow .right{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translate(0%,-50%);
+}
