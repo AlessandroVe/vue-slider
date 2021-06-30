@@ -3,6 +3,7 @@ const app =  new Vue({
     data:{
         name:"",
         showHello:true,
+        intervalSlot:null,
         imgArray:[
         "https://www.mobileworld.it/wp-content/uploads/2018/09/Sfondi-Islanda-drone-017.jpg",
         "https://www.mobileworld.it/wp-content/uploads/2018/09/Sfondi-Islanda-drone-07.jpg",
@@ -13,12 +14,16 @@ const app =  new Vue({
     },
     created(){
 
-        setInterval(() => {
-            this.next();
-        }, 3000);
+        this.timer()
 
     },
     methods:{
+        timer:function(){
+            this.intervalSlot = setInterval(() => {
+                this.next();
+            }, 3000);
+
+        },
         saluto : function(){
             return this.name && this.showHello === true 
         },
@@ -31,6 +36,8 @@ const app =  new Vue({
             }else{
                 this.pictureIndex++
             }
+            clearInterval(this.intervalSlot);
+            this.timer();
         },
         prev : function(){
             if(this.pictureIndex===0){
@@ -38,6 +45,8 @@ const app =  new Vue({
            }else {
             this.pictureIndex--
            }
+           clearInterval(this.intervalSlot);
+           this.timer();
         },
         isCurrentDot:function(index){
             if(index === this.pictureIndex){
@@ -48,6 +57,8 @@ const app =  new Vue({
         },
         selectImg:function(index){
             this.pictureIndex = index
+            clearInterval(this.intervalSlot);
+            this.timer();
         }
         
     }
